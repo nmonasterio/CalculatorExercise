@@ -386,7 +386,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="plusMinusButton" destination="2" eventType="touchUpInside" id="hgY-xi-itP"/>
+                                    <action selector="plusMinusPressed" destination="2" eventType="touchUpInside" id="Jab-PL-Wkw"/>
                                 </connections>
                             </button>
                         </subviews>

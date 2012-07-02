@@ -32,7 +32,7 @@
     if(!_brain){
         _brain = [[CalculatorBrain alloc]init];
     }
-return _brain;
+    return _brain;
 }
 
 
@@ -43,21 +43,21 @@ return _brain;
     
     NSString *digit = sender.currentTitle;
     
-//    if (!((userHasPressedTheDecimalPointButton = YES) && ([self.display.text rangeOfString:@"."].location != NSNotFound))) {
-
+    //    if (!((userHasPressedTheDecimalPointButton = YES) && ([self.display.text rangeOfString:@"."].location != NSNotFound))) {
+    
     if(self.userIsInTheMiddleOfEnteringANumber) {
         
-    self.display.text = [self.display.text stringByAppendingString:digit]; //method of NSString for concatenating
+        self.display.text = [self.display.text stringByAppendingString:digit]; //method of NSString for concatenating
         
     }
     
     else  {
         self.display.text = digit;
         self.userIsInTheMiddleOfEnteringANumber = YES;
-    
+        
     }
-     //&& ([) !([digit isEqualToString:@"."])
-        //([self.display.text rangeOfString:@"."].location == NSNotFound)
+    //&& ([) !([digit isEqualToString:@"."])
+    //([self.display.text rangeOfString:@"."].location == NSNotFound)
     
 }
 
@@ -91,18 +91,17 @@ return _brain;
 
 
 - (IBAction)operationPressed:(UIButton *)sender {
-
+    
     if(self.userIsInTheMiddleOfEnteringANumber) {
         [self enterPressed];
         
-    
+        
     }
     
-   
     double result = [self.brain performOperation:sender.currentTitle];
     NSString *resultString = [NSString stringWithFormat:@"%g", result];
     self.display.text = resultString;
-
+    
     self.history.text = [self.history.text stringByAppendingFormat:@"%@ %@ ", self.display.text, sender.currentTitle];
     
     NSString *historyString = self.history.text;
@@ -126,8 +125,8 @@ return _brain;
 
 - (IBAction)backspaceButton {
     if((self.display.text.length > 1)) {
-    
-    self.display.text = [self.display.text substringToIndex:(self.display.text.length -1)];
+        
+        self.display.text = [self.display.text substringToIndex:(self.display.text.length -1)];
     }
     else {
         
@@ -136,7 +135,7 @@ return _brain;
     }
 }
 
-- (IBAction)plusMinusButton {
+- (IBAction)plusMinusPressed {
     NSString *currentDisplay = self.display.text;
     if(self.userIsInTheMiddleOfEnteringANumber) {
         if([currentDisplay rangeOfString:@"-"].location == NSNotFound) {
@@ -147,21 +146,22 @@ return _brain;
         }
     }
     
-//    else {
-//        if([currentDisplay rangeOfString:@"-"].location == NSNotFound) {
-//            self.display.text = [NSString stringWithFormat:@"-%@", currentDisplay];
-//            self.userIsInTheMiddleOfEnteringANumber = YES;
-//            
-//        }
-//        else {
-//            
-//            self.display.text = [self.display.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//            self.userIsInTheMiddleOfEnteringANumber = YES;
-//
-//            
-//        }
-//
-//    }
+    
+    //    else {
+    //        if([currentDisplay rangeOfString:@"-"].location == NSNotFound) {
+    //            self.display.text = [NSString stringWithFormat:@"-%@", currentDisplay];
+    //            self.userIsInTheMiddleOfEnteringANumber = YES;
+    //            
+    //        }
+    //        else {
+    //            
+    //            self.display.text = [self.display.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    //            self.userIsInTheMiddleOfEnteringANumber = YES;
+    //
+    //            
+    //        }
+    //
+    //    }
     
 }
 
